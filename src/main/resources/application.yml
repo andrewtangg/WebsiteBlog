@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: "Blog Website"
+  thymeleaf:
+    cache: false
+    enabled: true
+    prefix: classpath:/templates/
+    suffix: .html

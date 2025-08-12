@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${user}"> Page</title>
+    <link rel="stylesheet" type = "text/css" th:href="@{/css/style.css}" />
+</head>
+<body>
+
+<button th:if="${user != null}"><a th:href="@{/}">Logout</a></button>
+</body>
+</html>
