@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User Form</title>
+</head>
+<body>
+<h2>Enter Your Name</h2>
+<form th:action="@{/submit}" th:object="${form}" method="post" th:fragment="form">
+    <input type="text" id="text" name="text"/>
+    <button type="submit">Submit</button>
+</form>
+</body>
+</html>

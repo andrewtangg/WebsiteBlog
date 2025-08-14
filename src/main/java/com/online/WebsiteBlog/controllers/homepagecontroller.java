@@ -1,5 +1,6 @@
 package com.online.WebsiteBlog.controllers;
 
+import com.online.WebsiteBlog.form.Form;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,6 +32,17 @@ public class homepagecontroller {
         return "notes";
     }
 
+    @GetMapping("/form")
+    public String showForm(Model model){
+//        model.addAttribute("form", new Form());
+        return "form";
+    }
+
+    @PostMapping("/submit")
+    public String submitForm(@ModelAttribute("textInputForm") Form form, Model model){
+        model.addAttribute("text", form.getText());
+        return homePage(model);
+    }
 
     @GetMapping("/inventory")
     public String inventoryList(Model model){

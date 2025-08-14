@@ -10,7 +10,7 @@
 <h1>Welcome <span th:text="${user}"></span></h1>
 
 <div th:replace="fragments/navbar::navbar"></div>
-<button th:if="${user == null}"><a th:href="@{/login}">Login</a></button>
-<button th:if="${user != null}"><a th:href="@{/}">Logout</a></button>
+<div th:replace="fragments/form::form"></div>
+<span th:text="${text}"></span>
 </body>
 </html>
