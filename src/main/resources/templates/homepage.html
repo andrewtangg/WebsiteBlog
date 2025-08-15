@@ -11,6 +11,8 @@
 
 <div th:replace="fragments/navbar::navbar"></div>
 <div th:replace="fragments/form::form"></div>
-<span th:text="${text}"></span>
+<div class="grid-container">
+    <div class="grid-item" th:each="text : ${texts}" th:text="${text}"></div>
+</div>
 </body>
 </html>

@@ -8,7 +8,7 @@
     <a href="/" th:href="@{/}">Home</a>
     <a href="/about" th:href="@{/notes}">About</a>
     <a th:href="@{/login}" th:if="${user == null}">Login</a>
-    <a th:href="@{/}" th:if="${user != null}">Logout</a>
+    <a th:href="@{/logout}" th:if="${user != null}">Logout</a>
 </nav>
 
 </body>

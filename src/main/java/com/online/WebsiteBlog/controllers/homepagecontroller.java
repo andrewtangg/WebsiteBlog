@@ -1,12 +1,17 @@
 package com.online.WebsiteBlog.controllers;
 
 import com.online.WebsiteBlog.form.Form;
+import com.online.WebsiteBlog.users.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
 
 
 //@RestController
@@ -15,6 +20,10 @@ public class homepagecontroller {
     @Value("${spring.application.name}")
     String appName;
 
+    public static User user;
+
+    public static List<String> stringOfText;
+
     Map<String, Integer> inv;
 
     @GetMapping("/")
@@ -22,6 +31,11 @@ public class homepagecontroller {
         return "homepage";
     }
 
+    @GetMapping("/logout")
+    public String logoutPage(Model model){
+        user = null;
+        return "homepage";
+    }
     @GetMapping("/login")
     public String loginPage(){
         return "loginpage";
@@ -40,17 +54,12 @@ public class homepagecontroller {
 
     @PostMapping("/submit")
     public String submitForm(@ModelAttribute("textInputForm") Form form, Model model){
-        model.addAttribute("text", form.getText());
-        return homePage(model);
-    }
-
-    @GetMapping("/inventory")
-    public String inventoryList(Model model){
-        inv = new HashMap<>();
-        inv.put("Apples", 3);
-        inv.put("Oranges", 5);
-        inv.put("Bananas", 0);
-        model.addAttribute("inv", this.inv);
+        if(stringOfText == null){
+            stringOfText = new ArrayList<String>();
+        }
+        stringOfText.add(form.getText());
+        model.addAttribute("texts", stringOfText);
+        model.addAttribute("user", user.getUsername());
         return homePage(model);
     }
 
